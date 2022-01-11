@@ -12,6 +12,11 @@
 - error (setError) to tell user if the sign up or sign in failed
 - handleSubmit which sends the data to supabase
 
+#### ToDo.js - views
+
+- to do item and set to do item useStates
+- new to do item and set new to do item
+
 #### users.js - services
 
 - signInUser, signOutUser
@@ -20,3 +25,8 @@
 
 - Props passed down from Auth.js
 - handleSubmit onClick
+
+#### ToDo.js - component
+
+- A list of to do items
+- handleAdd for users to add new to do item into a form
