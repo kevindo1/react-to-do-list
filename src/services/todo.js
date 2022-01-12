@@ -6,7 +6,7 @@ export async function createToDo(task) {
 }
 
 export async function fetchTasks() {
-  const resp = await client.from('todos').select('*');
+  const resp = await client.from('todos').select('*').order('id', { ascending: true });
   return checkError(resp);
 }
 

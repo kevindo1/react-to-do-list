@@ -1,7 +1,7 @@
 import React from 'react';
 import './Add.css';
 
-export default function ToDoComponent({ handleSubmit, setTask, logOutUser }) {
+export default function ToDoComponent({ task, handleSubmit, setTask, logOutUser }) {
   return (
     <>
       <div>
@@ -11,9 +11,11 @@ export default function ToDoComponent({ handleSubmit, setTask, logOutUser }) {
             <input
               type="text"
               name="task"
+              value={task}
               onChange={(e) => {
                 setTask(e.target.value);
               }}
+              placeholder=""
             />
           </label>
           <div>

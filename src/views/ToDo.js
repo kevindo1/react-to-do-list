@@ -6,7 +6,7 @@ import { createToDo, fetchTasks, toggleCompleted } from '../services/todo';
 import { logout } from '../services/users';
 
 export default function ToDo({ setCurrentUser }) {
-  const [task, setTask] = useState({});
+  const [task, setTask] = useState('');
   const [taskLists, setTaskLists] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,9 +26,11 @@ export default function ToDo({ setCurrentUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createToDo(task);
+      const resp = await createToDo(task);
+      setTask('');
+      setTaskLists((prev) => [...prev, resp[0]]);
       alert('Task added');
-    } catch {
+    } catch (e) {
       alert('Error, task not added');
     }
   };
@@ -55,7 +57,7 @@ export default function ToDo({ setCurrentUser }) {
   return (
     <div>
       <List taskLists={taskLists} handleClick={handleClick} />
-      <Add handleSubmit={handleSubmit} setTask={setTask} logOutUser={logOutUser} />
+      <Add handleSubmit={handleSubmit} task={task} setTask={setTask} logOutUser={logOutUser} />
     </div>
   );
 }
