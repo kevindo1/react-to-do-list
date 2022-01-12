@@ -8,6 +8,7 @@ export default function ToDo() {
   const [task, setTask] = useState({});
   const [taskLists, setTaskLists] = useState([]);
   const [loading, setLoading] = useState(true);
+  // const [completeTask, setCompleteTask] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +36,7 @@ export default function ToDo() {
   return (
     <div>
       <List taskLists={taskLists} />
-      <Add task={task} handleSubmit={handleSubmit} setTask={setTask} />
+      <Add handleSubmit={handleSubmit} setTask={setTask} />
     </div>
   );
 }

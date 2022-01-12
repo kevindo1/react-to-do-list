@@ -5,7 +5,12 @@ export default function List({ taskLists }) {
     <div>
       <h3>List of To Dos</h3>
       {taskLists.map((item) => (
-        <div key={item.id}>{item.task}</div>
+        <ul key={item.id}>
+          <li>
+            <input type="checkbox" />
+            {item.task}
+          </li>
+        </ul>
       ))}
     </div>
   );
