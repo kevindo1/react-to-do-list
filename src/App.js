@@ -18,7 +18,7 @@ function App() {
         </header>
         <Switch>
           <Route exact path="/">
-            {currentUser && <ToDo />}
+            {currentUser && <ToDo setCurrentUser={setCurrentUser} />}
             {!currentUser && <Auth setCurrentUser={setCurrentUser} />}
           </Route>
         </Switch>
