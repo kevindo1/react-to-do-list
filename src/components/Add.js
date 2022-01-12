@@ -15,7 +15,6 @@ export default function ToDoComponent({ task, handleSubmit, setTask, logOutUser 
               onChange={(e) => {
                 setTask(e.target.value);
               }}
-              placeholder=""
             />
           </label>
           <div>

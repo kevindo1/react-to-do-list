@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Add from '../components/Add';
 import List from '../components/List';
-import { createToDo, fetchTasks, toggleCompleted } from '../services/todo';
+import { createToDo, fetchTasks, toggleCompleted, deleteTask } from '../services/todo';
 import { logout } from '../services/users';
 
 export default function ToDo({ setCurrentUser }) {
@@ -39,14 +39,10 @@ export default function ToDo({ setCurrentUser }) {
     await toggleCompleted(task.id, !task.is_complete);
     const resp = await fetchTasks();
     setTaskLists(resp);
-    //   setTaskLists((prevState) =>
-    //     prevState.map((item) =>
-    //       item.id === item.id ? { ...task, is_complete: !task.is_complete } : item
-    //     )
-    //   );
-    // } catch {
-    //   alert('Error');
-    // }
+  };
+
+  const handleDelete = async (id) => {
+    await deleteTask(id);
   };
 
   const logOutUser = async () => {
@@ -56,7 +52,7 @@ export default function ToDo({ setCurrentUser }) {
 
   return (
     <div>
-      <List taskLists={taskLists} handleClick={handleClick} />
+      <List taskLists={taskLists} handleClick={handleClick} handleDelete={handleDelete} />
       <Add handleSubmit={handleSubmit} task={task} setTask={setTask} logOutUser={logOutUser} />
     </div>
   );
