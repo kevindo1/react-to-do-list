@@ -1,19 +1,18 @@
 import React from 'react';
 import './Add.css';
 
-export default function ToDoComponent({ task, taskLists, handleSubmit, updateTaskState }) {
+export default function ToDoComponent({ handleSubmit, setTask }) {
   return (
     <>
       <div>
         <form>
           <label>
-            To Do:
+            Add:
             <input
               type="text"
               name="task"
-              value={task}
               onChange={(e) => {
-                updateTaskState('task', e.target.value);
+                setTask(e.target.value);
               }}
             />
           </label>

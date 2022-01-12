@@ -22,11 +22,6 @@ export default function ToDo() {
     return <h3>Loading</h3>;
   }
 
-  const updateTaskState = (key, value) => {
-    task[key] = value;
-    setTask({ ...task });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -40,7 +35,7 @@ export default function ToDo() {
   return (
     <div>
       <List taskLists={taskLists} />
-      <Add task={task} handleSubmit={handleSubmit} updateTaskState={updateTaskState} />
+      <Add task={task} handleSubmit={handleSubmit} setTask={setTask} />
     </div>
   );
 }
