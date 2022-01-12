@@ -1,25 +1,32 @@
-# Alchemy React Base Template
+#### App.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- currentUser useState
+- Route to / which has login page and once logged in, can see the to do list
+- if currentUser is true, then sees the to do list
+- if currentUser is false, then send to auth page to sign up or sign in
 
-Use this template for all your "from scratch" deliverables. To start, simply run
+#### Auth.js - views
 
-- `npm install`
-- `npm start`
+- email (setEmail) and password (setPassword) useStates
+- type (setType) which determines if the user is signing in or signing up
+- error (setError) to tell user if the sign up or sign in failed
+- handleSubmit which sends the data to supabase
 
-## Available Scripts
+#### ToDo.js - views
 
-In the project directory, you can run:
+- to do item and set to do item useStates
+- new to do item and set new to do item
 
-### `npm start`
+#### users.js - services
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- signInUser, signOutUser
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### AuthForm.js - component
 
-### `npm test`
+- Props passed down from Auth.js
+- handleSubmit onClick
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### ToDo.js - component
+
+- A list of to do items
+- handleAdd for users to add new to do item into a form
