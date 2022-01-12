@@ -5,7 +5,7 @@ import List from '../components/List';
 import { createToDo, fetchTasks, toggleCompleted } from '../services/todo';
 import { logout } from '../services/users';
 
-export default function ToDo(setCurrentUser) {
+export default function ToDo({ setCurrentUser }) {
   const [task, setTask] = useState({});
   const [taskLists, setTaskLists] = useState([]);
   const [loading, setLoading] = useState(true);
