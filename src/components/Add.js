@@ -1,7 +1,7 @@
 import React from 'react';
 import './Add.css';
 
-export default function ToDoComponent({ handleSubmit, setTask }) {
+export default function ToDoComponent({ handleSubmit, setTask, logOutUser }) {
   return (
     <>
       <div>
@@ -20,6 +20,7 @@ export default function ToDoComponent({ handleSubmit, setTask }) {
             <button onClick={handleSubmit}>Submit</button>
           </div>
         </form>
+        <button onClick={logOutUser}>Log Out</button>
       </div>
     </>
   );

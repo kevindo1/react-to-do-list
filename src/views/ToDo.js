@@ -2,13 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Add from '../components/Add';
 import List from '../components/List';
-import { createToDo, fetchTasks } from '../services/todo';
+import { createToDo, fetchTasks, toggleCompleted } from '../services/todo';
+import { logout } from '../services/users';
 
-export default function ToDo() {
+export default function ToDo(setCurrentUser) {
   const [task, setTask] = useState({});
   const [taskLists, setTaskLists] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const [completeTask, setCompleteTask] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,10 +33,29 @@ export default function ToDo() {
     }
   };
 
+  const handleClick = async (task) => {
+    await toggleCompleted(task.id, !task.is_complete);
+    const resp = await fetchTasks();
+    setTaskLists(resp);
+    //   setTaskLists((prevState) =>
+    //     prevState.map((item) =>
+    //       item.id === item.id ? { ...task, is_complete: !task.is_complete } : item
+    //     )
+    //   );
+    // } catch {
+    //   alert('Error');
+    // }
+  };
+
+  const logOutUser = async () => {
+    await logout();
+    setCurrentUser(null);
+  };
+
   return (
     <div>
-      <List taskLists={taskLists} />
-      <Add handleSubmit={handleSubmit} setTask={setTask} />
+      <List taskLists={taskLists} handleClick={handleClick} />
+      <Add handleSubmit={handleSubmit} setTask={setTask} logOutUser={logOutUser} />
     </div>
   );
 }
